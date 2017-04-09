@@ -1,0 +1,32 @@
+.zs ul {
+    margin-top: 10px;
+}
+
+.zs li {
+    float:left;
+    width: 30%;
+    list-style: none;
+    margin-right: 30px;
+    margin-top: 10px;
+    white-space: nowrap;
+}
+
+.zs input{
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.zs label {
+    width: 90px;
+    float: left;
+    margin-right: 15px;
+    text-align: right;
+    margin-top: 4px;
+}
+
+.zsbtn {
+    height: 26px;
+    border-radius: 6px;
+    margin-left: 10px;
+    text-align: center;
+}

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>机器管理</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- basic styles -->
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="../assets/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="../assets/css/jquery-ui-1.10.3.full.min.css" />
+    <link rel="stylesheet" href="../assets/css/datepicker.css" />
+    <link rel="stylesheet" href="../assets/css/ui.jqgrid.css" />
+    <!-- fonts -->
+
+<!--
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+-->
+
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="../assets/css/ace.min.css" />
+    <link rel="stylesheet" href="../assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="../assets/css/ace-skins.min.css" />
+
+    <!--zs styles-->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="../assets/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+
+    <!-- ace settings handler -->
+
+    <script src="../assets/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!--my js-->
+    <script src="../static/js/fetch.min.js"></script>
+</head>
+
+<body>
+<div class="navbar navbar-default" id="navbar">
+    <script type="text/javascript">
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+    </script>
+
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <img src="../static/img/sdu.png" style="height: 30px;" />
+                <small>
+                    基于Hadoop的服务管理系统
+                </small>
+            </a><!-- /.brand -->
+        </div><!-- /.navbar-header -->
+
+        <div class="navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+
+                <li class="green">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="icon-envelope icon-animated-vertical"></i>
+                        <span class="badge badge-success">5</span>
+                    </a>
+
+                    <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header">
+                            <i class="icon-envelope-alt"></i>
+                            5 Messages
+                        </li>
+                        <li>
+                            <a href="../temp/inbox.html">
+                                See all messages
+                                <i class="icon-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="../assets/avatars/avatar2.png" alt="Jason's Photo" />
+                        <span class="user-info">
+									<small>Welcome,</small>
+									Jason
+								</span>
+                        <i class="icon-caret-down"></i>
+                    </a>
+
+                    <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a href="#">
+                                <i class="icon-cog"></i>
+                                Settings
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="icon-user"></i>
+                                Profile
+                            </a>
+                        </li>
+
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="#">
+                                <i class="icon-off"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul><!-- /.ace-nav -->
+        </div><!-- /.navbar-header -->
+    </div><!-- /.container -->
+</div>
+
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    </script>
+
+    <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        <div class="sidebar" id="sidebar">
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="nav nav-list">
+                <li>
+                    <a href="index.html">
+                        <i class="icon-home"></i>
+                        <span class="menu-text"> 首页</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="machine.html">
+                        <i class="icon-desktop"></i>
+                        <span class="menu-text"> 机器管理 </span>
+                    </a>
+
+                </li>
+
+                <li>
+                    <a href="service.html">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 服务管理 </span>
+                    </a>
+                </li>
+            </ul><!-- /.nav-list -->
+
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+            </script>
+        </div>
+
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                </script>
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        <a href="index.html">主页</a>
+                    </li>
+                    <li class="active">机器管理</li>
+                </ul><!-- .breadcrumb -->
+
+                <div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                            <i class="icon-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div><!-- #nav-search -->
+            </div>
+
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        服务器
+                        <small>
+                            <i class="icon-double-angle-right"></i>
+                            管理信息
+                        </small>
+                    </h1>
+                </div><!-- /.page-header -->
+                <!--添加机器信息-->
+                <div class="modal fade" id="addmechine">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 972px;margin-left: -150px">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <h4 style="margin-top: -9px">添加机器信息</h4>
+                                    <div class="col-xs-12" style="width:970px;margin-left:-8px;border-style: solid;border-width: 1px;border-color: lightblue;padding-bottom: 20px">
+                                        <!-- PAGE CONTENT BEGINS -->
+                                        <form style="margin-top: 20px;" id="machineadd">
+                                            <div class="zs">
+                                                <ul>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-ip"> *服务器ip </label>
+                                                            <input type="text" class="col-xs-17 zsinput" name="ip" id="ip"  />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-user"> *用户名 </label>
+                                                            <input type="text" class="zsinput" name="user" id="user" placeholder="Username"  />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <!--联系方式-->
+                                                        <div>
+                                                            <label id="label-password"> *密码 </label>
+                                                            <input type="text" class="zsinput" name="password" id="password"  />
+                                                        </div>
+                                                    </li>
+                                                    <li style="width: 100%">
+                                                        <div>
+                                                            <label id="label-password"> *docker端口 </label>
+                                                            <input type="text" class="zsinput" name="docker" id="docker"  />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-name"> 主机名 </label>
+                                                            <input type="text" class="zsinput" name="name" id="name" placeholder="HostName" />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-cpuCount"> cpu内核数 </label>
+                                                            <input type="text" class="zsinput" name="cpuCount" id="cpuCount" />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-cpuModel"> cpu型号 </label>
+                                                            <input type="text" class="zsinput" name="cpuModel" id="cpuModel"  />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-ramSize"> 内存大小 </label>
+                                                            <input type="text" class="zsinput" name="ramSize" id="ramSize"  />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-diskSize"> 硬盘大小 </label>
+                                                            <input type="text" class="zsinput" name="diskSize" id="diskSize"/>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-system"> 操作系统 </label>
+                                                            <input type="text" class="zsinput" name="system" id="system" />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-containerCount"> 容器个数 </label>
+                                                            <input type="text" class="zsinput" name="containerCount" id="containerCount"/>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-status"> 服务器状态 </label>
+                                                            <select class="zsinput" name="status" id="status" style="width: 163px;border-radius: 4px">
+                                                                <option value="正常">正常</option>
+                                                                <option value="AL">无法启动</option>
+                                                            </select>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-bandwidth"> 带宽 </label>
+                                                            <input type="text" class="zsinput" name="bandwidth" id="bandwidth"  />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-gateway"> 网关 </label>
+                                                            <input type="text" class="zsinput" name="gateway" id="gateway"  />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label id="label-mask"> 子网掩码 </label>
+                                                            <input type="text" class="zsinput" name="mask" id="mask"/>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </form>
+                                    </div><!-- /.col -->
+                                </div><!-- /.row -->
+                            </div>
+                            <div class="modal-footer" style="margin-top: -20px">
+                                <div style="float:right;">
+                                    <button class="btn btn-sm" id="huoqu" onclick="getOneMachine()" style="border-radius: 6px;display: none">
+                                        <i class="icon-edit"></i>
+                                        获取
+                                    </button>
+                                    <button class="btn btn-sm btn-primary" id="baocun" onclick="addMachine()" style="border-radius: 6px">
+                                        <i class="icon-ok"></i>
+                                        保存
+                                    </button>
+                                    <button class="btn btn-sm btn-primary" id="gengxin" onclick="updateMechine()" style="border-radius: 6px;display: none">
+                                        <i class="icon-ok"></i>
+                                        更新
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--获取机器信息-->
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12" style="border-style: solid;border-width: 1px;border-color: lightblue;padding-bottom: 10px">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <form style="margin-top: 20px;" id="chaxun">
+                                <div class="zs">
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <label id="label-ip"> IP</label>
+                                                <input type="text" class="zsinput" value="115.28.201.92" name="ip"  id="cip" placeholder="IP地址" />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <label id="label-chostname"> 主机名 </label>
+                                                <input type="text" class="zsinput" name="name" id="cname"  />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <label id="label-cusername"> 用户名 </label>
+                                                <input type="text" class="zsinput"  name="" id="cuser" placeholder=""  />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <label id="label-cserverstate"> 服务器状态 </label>
+                                                <select class="zsinput" id="cstatus" name="status" style="width: 170px;border-radius: 4px">
+                                                    <option value="" selected="selected"></option>
+                                                    <option value="正常" >正常</option>
+                                                    <option value="AL">无法启动</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <label id="label-cdocker"> *docker端口 </label>
+                                                <input type="text" class="zsinput" name="docker"  id="cdocker" value="2323" placeholder=""  />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>
+                            <div style="float: right;margin-top: 40px">
+                                <button class="btn btn-sm"  onclick="getMachines()" style="border-radius: 5px">
+                                    <i class="icon-ok"></i>
+                                    查询
+                                </button>
+
+                                <button class="btn btn-sm btn-primary" onclick="formReset('chaxun')" style="border-radius: 5px">
+                                    <i class="icon-undo"></i>
+                                    重置
+                                </button>
+                            </div>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div>
+
+                <!--显示机器信息-->
+                <div class="row">
+                    <div>
+                        <!-- PAGE CONTENT BEGINS -->
+                        <table id="grid-table"></table>
+
+                        <div id="grid-pager"></div>
+
+                        <script type="text/javascript">
+                            var $path_base = "/";//this will be used in gritter alerts containing images
+                        </script>
+
+                        <p style="float: right;margin-top: 7px;">
+                            <button class="btn zsbtn" value="" onclick="add()" style="line-height: 6.5px;">新增</button>
+                            <button class="btn btn-primary zsbtn" style="line-height: 6.5px;" onclick="modify()">修改</button>
+                            <button class="btn btn-warning zsbtn" style="line-height: 6.5px;">删除</button>
+                            <button class="btn btn-success zsbtn" style="line-height: 6.5px;">Docker 操作</button>
+                            <button class="btn btn-success zsbtn" style="line-height: 6.5px;">配置网桥</button>
+                        </p>
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+            <!--改变整体样式-->
+            <div class="ace-settings-container" id="ace-settings-container" style="display: none">
+                <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                    <i class="icon-cog bigger-150"></i>
+                </div>
+
+                <div class="ace-settings-box" id="ace-settings-box">
+                    <div>
+                        <input type="checkbox" checked="checked" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+                        <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" checked="checked" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+                        <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" checked="checked" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+                        <label class="lbl" for="ace-settings-add-container">
+                            Inside
+                            <b>.container</b>
+                        </label>
+                    </div>
+                </div>
+            </div><!-- /#ace-settings-container -->
+        </div><!-- /.main-container-inner -->
+    </div><!-- /.main-container -->
+
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
+
+    <!--[if !IE]> -->
+
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    </script>
+
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        if("ontouchend" in document) document.write("<script src='../assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    </script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/typeahead-bs2.min.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <script src="../assets/js/date-time/bootstrap-datepicker.min.js"></script>
+    <script src="../assets/js/jqGrid/jquery.jqGrid.min.js"></script>
+    <script src="../assets/js/jqGrid/i18n/grid.locale-en.js"></script>
+
+    <!-- ace scripts -->
+    <script src="../assets/js/ace-elements.min.js"></script>
+    <script src="../assets/js/ace.min.js"></script>
+
+    <!-- inline scripts related to this page -->
+    <!--my js-->
+    <script src="../static/js/base.js"></script>
+    <script src="../static/js/machine.js"></script>
+</body>
+</html>

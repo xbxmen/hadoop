@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>服务管理</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- basic styles -->
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css" />
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="../assets/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="../assets/css/jquery-ui-1.10.3.full.min.css" />
+    <link rel="stylesheet" href="../assets/css/datepicker.css" />
+    <link rel="stylesheet" href="../assets/css/ui.jqgrid.css" />
+    <!-- fonts -->
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="../assets/css/ace.min.css" />
+    <link rel="stylesheet" href="../assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="../assets/css/ace-skins.min.css" />
+
+    <!--zs styles-->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="../assets/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+
+    <!-- ace settings handler -->
+
+    <script src="../assets/js/ace-extra.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+    <!--my js -->
+    <script src="../static/js/fetch.min.js"></script>
+</head>
+
+<body>
+<div class="navbar navbar-default" id="navbar">
+    <script type="text/javascript">
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+    </script>
+
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <img src="../static/img/sdu.png" style="height: 30px;" />
+                <small>
+                    基于Hadoop的服务管理系统
+                </small>
+            </a><!-- /.brand -->
+        </div><!-- /.navbar-header -->
+
+        <div class="navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+
+                <li class="green">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="icon-envelope icon-animated-vertical"></i>
+                        <span class="badge badge-success">5</span>
+                    </a>
+
+                    <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header">
+                            <i class="icon-envelope-alt"></i>
+                            5 Messages
+                        </li>
+                        <li>
+                            <a href="../temp/inbox.html">
+                                See all messages
+                                <i class="icon-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="../assets/avatars/avatar2.png" alt="Jason's Photo" />
+                        <span class="user-info">
+									<small>Welcome,</small>
+									Jason
+								</span>
+                        <i class="icon-caret-down"></i>
+                    </a>
+
+                    <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a href="#">
+                                <i class="icon-cog"></i>
+                                Settings
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="icon-user"></i>
+                                Profile
+                            </a>
+                        </li>
+
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="#">
+                                <i class="icon-off"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul><!-- /.ace-nav -->
+        </div><!-- /.navbar-header -->
+    </div><!-- /.container -->
+</div>
+
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    </script>
+
+    <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        <div class="sidebar" id="sidebar">
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="nav nav-list">
+                <li>
+                    <a href="index.html">
+                        <i class="icon-home"></i>
+                        <span class="menu-text"> 首页</span>
+                    </a>
+                </li>
+
+                <li >
+                    <a href="machine.html">
+                        <i class="icon-desktop"></i>
+                        <span class="menu-text"> 机器管理 </span>
+                    </a>
+
+                </li>
+
+                <li class="active">
+                    <a href="service.html">
+                        <i class="icon-text-width"></i>
+                        <span class="menu-text"> 服务管理 </span>
+                    </a>
+                </li>
+            </ul><!-- /.nav-list -->
+
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+            </script>
+        </div>
+
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                </script>
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        <a href="index.html">主页</a>
+                    </li>
+                    <li class="active">服务管理</li>
+                </ul><!-- .breadcrumb -->
+
+                <div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                            <i class="icon-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div><!-- #nav-search -->
+            </div>
+
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        服务
+                        <small>
+                            <i class="icon-double-angle-right"></i>
+                            管理表格
+                        </small>
+                    </h1>
+                </div><!-- /.page-header -->
+                <!--添加服务信息-->
+                <div class="modal fade" id="addservice">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 980px;margin-left: -160px;margin-top: 100px">
+                            <div style="display: block">
+                                <div class="row" style="width: 978px;margin-left: 0px">
+                                    <div class="col-xs-12" style="border-style: solid;border-width: 1px;border-color: lightblue;background-color: lightblue">
+                                        <label>新增Mapreduce服务信息</label>
+                                    </div>
+                                    <div class="col-xs-12" style="border-style: solid;border-width: 1px;border-color: lightblue;padding-bottom: 20px">
+                                        <!-- PAGE CONTENT BEGINS -->
+                                        <form style="margin-top: 20px;" id="service" enctype="multipart/form-data">
+                                            <div class="zs">
+                                                <ul>
+                                                    <li>
+                                                        <div>
+                                                            <label> *所属集群 </label>
+                                                            <select style="border-radius: 6px;width: 170px" name="cluster" id="cluster">
+                                                                <option value="zs123">zs123</option>z
+                                                                <option value="dw123">de123</option>
+                                                            </select>
+
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label> *服务编号 </label>
+                                                            <input type="text" id="id" name="id" placeholder="ServiceNumber" value="22222" />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <!--联系方式-->
+                                                        <div>
+                                                            <label> *服务名称 </label>
+                                                            <input type="text"  id="name" name="name" placeholder="ServiceName" value="spark sql 服务"  />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label> *服务类型 </label>
+                                                            <input type="text" id="type" name="type" value="HIVSql 服务" />
+                                                        </div>
+                                                    </li>
+
+                                                    <li style="width: 60%">
+                                                        <div>
+                                                            <label> *描述 </label>
+                                                            <input type="text" style="width: 470px" id="description" name="description" value="自定义服务" placeholder="Description" />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label> *版本 </label>
+                                                            <input type="text" id="version" name="version" value="1.0" />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label> *创建人员 </label>
+                                                            <input  type="text" id="maker" name="maker" value="zs" />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label> 创建时间 </label>
+                                                            <input type="text" id="date" name="date" value="2017-03-22" />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label> 服务jar包</label>
+                                                            <div class="ace-file-input" style="margin-left: 105px;width:170px;padding: 0px">
+                                                                <div class="" style="width: 170px">
+                                                                    <input type="file" name="jar" id="id-input-file-2" />
+                                                                </div>
+                                                            </div>
+                                                          <!--  <div class="ace-file-input" style="margin-left: 105px;width:170px;" >
+                                                                <label class="file-label" data-title="Choose" style="width: 170px" >
+                                                                    <input type="file" name="jar"/>
+                                                                    <span class="file-name" data-title="No File ..." value>
+                                                                        <i class="icon-upload-alt">
+                                                                        </i>
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                        </div>-->
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label> *存储路径 </label>
+                                                            <input  type="text" id="path" name="path" value="" />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <label> 依赖包路径 </label>
+                                                            <input type="text" id="dapendPath" name="dapendPath" value="" />
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </form>
+                                    </div><!-- /.col -->
+                                </div><!-- /.row -->
+                            </div>
+                            <div style="float:right;margin-top: 10px">
+                                <button class="btn btn-sm btn-primary" onclick="addService()" style="border-radius: 6px">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--获取服务信息-->
+                <div>
+                    <div class="row">
+                        <div class="col-xs-12" style="border-style: solid;border-width: 1px;border-color: lightblue;padding-bottom: 10px">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <form style="margin-top: 20px;" id="FService">
+                                <div class="zs">
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <label> *所属集群</label>
+                                                <select id="cluster" name="cluster" style="width: 170px;border-radius: 4px">
+                                                    <option value="dw123" selected="selected">dw123</option>
+                                                    <option value="zs123">zs123</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <label> 服务编号 </label>
+                                                <input type="text" width="200px"  name="id" id="cid"  />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <label> 服务名称 </label>
+                                                <input type="text"  id="cname" name="name" placeholder=""  />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <label> 服务类型 </label>
+                                                <select id="服务类型" name="type" style="width: 170px;border-radius: 4px">
+                                                    <option value=""></option>
+                                                    <option value="HIVSql服务">HIVSql 服务</option>
+                                                    <option value="spark sql服务">spark sql服务</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>
+                            <div style="float: right;margin-top: 40px">
+                                <button class="btn btn-sm" data-dismiss="modal" onclick="getServices()" style="border-radius: 5px">
+                                    <i class="icon-ok"></i>
+                                    查询
+                                </button>
+                                <button class="btn btn-sm btn-danger" style="border-radius: 5px" onclick="formReset('FService')">
+                                    <i class="icon-undo"></i>
+                                    重置
+                                </button>
+                            </div>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div>
+
+                <!--显示机器信息-->
+                <div class="row" style="width: 982px;margin-left: -24px">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+
+                        <table id="grid-table"></table>
+
+                        <div id="grid-pager"></div>
+
+                        <script type="text/javascript">
+                            var $path_base = "/";//this will be used in gritter alerts containing images
+                        </script>
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+                <p style="float: right;margin-top: 7px;">
+                    <button class="btn btn-primary zsbtn" data-target="" value="" style="line-height: 6.5px;">立即执行</button>
+                    <button class="btn btn-primary zsbtn" value="" style="line-height: 6.5px;">定时维护</button>
+                    <button class="btn btn-primary zsbtn" data-toggle="modal" data-target="#addservice" value="" style="line-height: 6.5px;">新增</button>
+                    <button class="btn btn-primary zsbtn" style="line-height: 6.5px;">修改</button>
+                    <button class="btn btn-primary zsbtn" style="line-height: 6.5px;">删除</button>
+                    <button class="btn btn-primary zsbtn" style="line-height: 6.5px;">注销</button>
+                    <button class="btn btn-primary zsbtn" style="line-height: 6.5px;">撤销注销</button>
+                </p>
+            </div><!-- /.page-content -->
+            <!--改变整体样式-->
+            <div class="ace-settings-container" id="ace-settings-container" style="display: none">
+                <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                    <i class="icon-cog bigger-150"></i>
+                </div>
+
+                <div class="ace-settings-box" id="ace-settings-box">
+                    <div>
+                        <input type="checkbox" checked="checked" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+                        <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" checked="checked" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+                        <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" checked="checked" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+                        <label class="lbl" for="ace-settings-add-container">
+                            Inside
+                            <b>.container</b>
+                        </label>
+                    </div>
+                </div>
+            </div><!-- /#ace-settings-container -->
+        </div>
+        </div><!-- /.main-container-inner -->
+    </div><!-- /.main-container -->
+
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
+
+    <!--[if !IE]> -->
+
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    </script>
+
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        if("ontouchend" in document) document.write("<script src='../assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    </script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/typeahead-bs2.min.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <script src="../assets/js/jqGrid/jquery.jqGrid.min.js"></script>
+    <script src="../assets/js/jqGrid/i18n/grid.locale-en.js"></script>
+
+    <!-- ace scripts -->
+    <script src="../assets/js/ace-elements.min.js"></script>
+    <script src="../assets/js/ace.min.js"></script>
+
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+        jQuery(function($) {
+            $('#id-input-file-1 , #id-input-file-2').ace_file_input({
+                no_file:'No File ...',
+                btn_choose:'Choose',
+                btn_change:'Change',
+                droppable:false,
+                onchange:null,
+                thumbnail:false //| true | large
+                //whitelist:'gif|png|jpg|jpeg'
+                //blacklist:'exe|php'
+                //onchange:''
+                //
+            });
+            //dynamically change allowed formats by changing before_change callback function
+            $('#id-file-format').removeAttr('checked').on('change', function() {
+                var before_change
+                var btn_choose
+                var no_icon
+                if(this.checked) {
+                    btn_choose = "Drop images here or click to choose";
+                    no_icon = "icon-picture";
+                    before_change = function(files, dropped) {
+                        var allowed_files = [];
+                        for(var i = 0 ; i < files.length; i++) {
+                            var file = files[i];
+                            if(typeof file === "string") {
+                                //IE8 and browsers that don't support File Object
+                                if(! (/\.(jpe?g|png|gif|bmp)$/i).test(file) ) return false;
+                            }
+                            else {
+                                var type = $.trim(file.type);
+                                if( ( type.length > 0 && ! (/^image\/(jpe?g|png|gif|bmp)$/i).test(type) )
+                                    || ( type.length == 0 && ! (/\.(jpe?g|png|gif|bmp)$/i).test(file.name) )//for android's default browser which gives an empty string for file.type
+                                ) continue;//not an image so don't keep this file
+                            }
+
+                            allowed_files.push(file);
+                        }
+                        if(allowed_files.length == 0) return false;
+
+                        return allowed_files;
+                    }
+                }
+                else {
+                    btn_choose = "Drop files here or click to choose";
+                    no_icon = "icon-cloud-upload";
+                    before_change = function(files, dropped) {
+                        return files;
+                    }
+                }
+                var file_input = $('#id-input-file-3');
+                file_input.ace_file_input('update_settings', {'before_change':before_change, 'btn_choose': btn_choose, 'no_icon':no_icon})
+                file_input.ace_file_input('reset_input');
+            });
+
+        });
+    </script>
+    <script src="../static/js/base.js"></script>
+    <script src="../static/js/service.js"></script>
+</body>
+</html>
